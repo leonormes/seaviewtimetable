@@ -1,0 +1,23 @@
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: Roboto sans-serif;
+}
+.content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.dayRow {
+	border-bottom: 1px solid #e0dede;
+	display: flex;
+	justify-content: space-between;
+}
+#dayBox {
+	margin: 5px;
+	min-height: 20px
+}
+#space {
+	border-bottom: none;
+}
