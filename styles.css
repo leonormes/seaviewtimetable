@@ -3,21 +3,68 @@ body {
 	flex-direction: column;
 	align-items: center;
 	font-family: Roboto sans-serif;
+	background-color: #f7f7f7;
 }
 .content {
+	padding: 8px;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
+	min-width: 700px;
+	border-radius: 7px;
+	box-shadow: 5px 5px 2px #888888;
+	background-color: white;
 }
+h2 {
+	font-family: 'Open Sans', sans-serif;
+}
+
 .dayRow {
 	border-bottom: 1px solid #e0dede;
 	display: flex;
 	justify-content: space-between;
-}
-#dayBox {
 	margin: 5px;
-	min-height: 20px
 }
-#space {
+.age {
+	margin: 0px 5px 0px 5px;
+}
+.dayBox {
+	display: flex;
+	margin: 5px;
+	flex-direction: column;
+	min-width: 170px;
+	flex: 0 1 20%;
+	font-size: 1.2em;
+}
+.dayRow:empty {
 	border-bottom: none;
+	display: none;
+}
+.timeTable, .waiting {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+}
+.spaces {
+	display: flex;
+	justify-content: space-between;
+	background-color: linen;
+}
+.numSpaces {
+	display: flex;
+	min-width: 170px;
+	justify-content: center;
+}
+#dayHeading {
+	display: flex;
+	justify-content: center;
+	text-transform: capitalize;
+}
+#dayHeading:empty {
+	display: none;
+}
+#pageTitle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

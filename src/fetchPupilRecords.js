@@ -14,10 +14,10 @@ function pupilRecordsToArray(pupilRecord) {
 	});
 	return pupilRecordsArray;
 }
-function filterActive(pupilRecordsArray) {
-	let active = pupilRecordsArray.filter(function(p) {
-		return p.status === 'Active';
+function filterStatus(pupilRecordsArray, filterBy) {
+	let filteredList = pupilRecordsArray.filter(function(p) {
+		return p.status === filterBy;
 	});
-	return active;
+	return filteredList;
 }
-module.exports = {fetchPupilRecords, pupilRecordsToArray, filterActive};
+module.exports = {fetchPupilRecords, pupilRecordsToArray, filterStatus};
