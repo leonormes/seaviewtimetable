@@ -20,9 +20,9 @@ h2 {
 }
 
 .dayRow {
-	border-bottom: 1px solid #e0dede;
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+
 	margin: 5px;
 }
 .age {
@@ -35,6 +35,10 @@ h2 {
 	min-width: 170px;
 	flex: 0 1 20%;
 	font-size: 1.2em;
+}
+.nameAge {
+	display: flex;
+	justify-content: space-between;
 }
 .dayRow:empty {
 	border-bottom: none;

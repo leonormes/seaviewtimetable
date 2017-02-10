@@ -21,7 +21,7 @@ fetchPupilRecords().then(function(pupils) {
 });
 function dailyRegister(day, status) {
 	let dayReg = status.filter(function(pup) {
-		return pup.days.indexOf(day) > -1;
+		return ~pup.days.indexOf(day);
 	});
 	return dayReg;
 }
@@ -34,9 +34,11 @@ function dayWaiting(todayWaiting, day) {
 	document.getElementsByClassName('waiting')[0]
 	.appendChild(tab);
 }
-function addStartDate() {
+function addStartDate(startDate) {
 	let startDiv = document.createElement('div');
 	startDiv.setAttribute('class', 'starting');
+	startDiv.textContent = moment(startDate).format('MMMM Do');
+	return startDiv;
 }
 function makeDay(todayReg, day) {
 	let todayNames = getFNames(todayReg);
@@ -50,14 +52,23 @@ function makeDay(todayReg, day) {
 }
 function tableRowContent(todayNames) {
 	let temp = state.tableParts.dayBox;
-	let row = temp.querySelectorAll('.dayRow');
+	let nameDiv = temp.querySelectorAll('.nameAge');
+	let starter = temp.querySelectorAll('.starter');
+	console.log(temp);
 	for(let i = 0; i < 8; i++) {
 		if(todayNames[i]) {
-			row[i].textContent = todayNames[i].fname;
-			row[i].id = todayNames[i].key;
-			row[i].appendChild(addAgeDiv(todayNames[i].dob, state.tableParts.age));
+			nameDiv[i].textContent = todayNames[i].fname;
+			nameDiv[i].id = todayNames[i].key;
+			nameDiv[i].appendChild(addAgeDiv(todayNames[i].dob,
+				state.tableParts.age));
+			if(todayNames[i].status === 'Waiting') {
+			starter[i].appendChild(addStartDate(todayNames[i].start));
 		} else {
-			row[i].textContent = null;
+			starter[i].textContent = null;
+		}
+		} else {
+			nameDiv[i].textContent = null;
+			nameDiv[i].removeAttribute('id');
 		}
 	}
 	return temp;
@@ -88,6 +99,7 @@ function getFNames(dayReg) {
 		let pupil = {};
 		pupil.fname = pup.childfname;
 		pupil.key = pup.key;
+		pupil.status = pup.status;
 		pupil.dob = pup.dob;
 		pupil.start = pup.startDate;
 		names.push(pupil);
