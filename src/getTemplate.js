@@ -1,6 +1,6 @@
 'use strict';
 import {state} from './stateObject';
-function getTemplate() {
+export default function getTemplate() {
 	let dayColumn = document.getElementById('dayColumn');
 	let pupilAge = document.getElementById('pupilAge');
 	state.tableParts.age = pupilAge.content.querySelector('.age');
@@ -9,4 +9,3 @@ function getTemplate() {
 	state.tableParts.dayHead = state.tableParts.dayBox
 	.querySelector('#dayHeading');
 }
-module.exports = {getTemplate};
