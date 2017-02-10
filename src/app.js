@@ -1,7 +1,9 @@
-import {fetchPupilRecords, pupilRecordsToArray, filterStatus}
-from './fetchPupilRecords.js';
+import fetchPupilRecords from './fetchPupilRecords.js';
+import filterStatus from './filterStatus';
+import pupilRecordsToArray from './pupilRecordsToArray';
+import getFNames from './getFNames';
 let moment = require('moment');
-import {getTemplate} from './generateTimetable';
+import getTemplate from './getTemplate';
 import {state} from './stateObject';
 let active;
 let waiting;
@@ -54,7 +56,6 @@ function tableRowContent(todayNames) {
 	let temp = state.tableParts.dayBox;
 	let nameDiv = temp.querySelectorAll('.nameAge');
 	let starter = temp.querySelectorAll('.starter');
-	console.log(temp);
 	for(let i = 0; i < 8; i++) {
 		if(todayNames[i]) {
 			nameDiv[i].textContent = todayNames[i].fname;
@@ -93,19 +94,7 @@ function getPupilAge(dob) {
 	let b = moment(dob);
 	return a.diff(b, 'months');
 };
-function getFNames(dayReg) {
-	let names = [];
-	dayReg.forEach(function(pup) {
-		let pupil = {};
-		pupil.fname = pup.childfname;
-		pupil.key = pup.key;
-		pupil.status = pup.status;
-		pupil.dob = pup.dob;
-		pupil.start = pup.startDate;
-		names.push(pupil);
-	});
-	return names;
-}
+
 function addTodayDate() {
 	let dateDiv = document.createElement('h2');
 	dateDiv.setAttribute('class', 'today');
