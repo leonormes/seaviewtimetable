@@ -1,4 +1,8 @@
+import toType from './toType';
 export default function getFNames(dayReg) {
+	if(toType(dayReg) !== 'array') {
+		throw new TypeError('Expected array, got ' + toType(dayReg));
+	}
 	let names = [];
 	dayReg.forEach(function(pup) {
 		let pupil = {};

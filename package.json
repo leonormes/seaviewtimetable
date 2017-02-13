@@ -8,22 +8,34 @@
     "moment": "^2.17.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "eslint": "^3.14.0",
-    "eslint-config-google": "^0.7.1",
-    "watchify": "^3.8.0",
+    "ava": "^0.18.1",
     "babel-cli": "^6.18.0",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "babel-plugin-transform-es2015-classes": "^6.18.0",
     "babel-polyfill": "^6.20.0",
     "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.22.0",
     "babelify": "^7.3.0",
-    "browserify": "^13.1.1"
+    "browserify": "^13.1.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.15.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-ava": "^4.1.0",
+    "mocha": "^3.2.0",
+    "watchify": "^3.8.0"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "ava",
     "watch": "watchify src/*.js -t babelify --plugins transform-es2015-classes -o public/bundle.js --debug --verbose"
+  },
+  "ava": {
+	  "files": [
+		"test/*.js"
+	  ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   },
   "repository": {
     "type": "git",
