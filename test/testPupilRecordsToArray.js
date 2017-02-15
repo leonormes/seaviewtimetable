@@ -3,7 +3,7 @@ import pupilRecordsToArray from '../src/pupilRecordsToArray';
 
 test('throw error if not given an object', (t) => {
 	t.throws(() => {
-		pupilRecordsToArray();
+		pupilRecordsToArray('notAnArray');
 	});
 });
 

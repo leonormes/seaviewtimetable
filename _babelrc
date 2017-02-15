@@ -1,0 +1,15 @@
+{
+	"presets": ["latest"],
+	"plugins": [
+		"transform-es2015-classes"
+	],
+		"env": {
+			"test": {
+				"plugins": ["istanbul"]
+			},
+			"development": {
+				"sourceMaps": "inline"
+			}
+		}
+
+}

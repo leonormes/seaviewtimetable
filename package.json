@@ -1,47 +1,57 @@
 {
-  "name": "seaviewtimetable",
-  "version": "0.0.1",
-  "description": "Seaview timetable",
-  "main": "index.js",
-  "dependencies": {
-    "chai": "^3.5.0",
-    "moment": "^2.17.1"
-  },
-  "devDependencies": {
-    "ava": "^0.18.1",
-    "babel-cli": "^6.18.0",
-    "babel-plugin-transform-custom-element-classes": "^0.1.0",
-    "babel-plugin-transform-es2015-classes": "^6.18.0",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-register": "^6.22.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.1.1",
-    "chai": "^3.5.0",
-    "eslint": "^3.15.0",
-    "eslint-config-google": "^0.7.1",
-    "eslint-plugin-ava": "^4.1.0",
-    "mocha": "^3.2.0",
-    "watchify": "^3.8.0"
-  },
-  "scripts": {
-    "test": "ava",
-    "watch": "watchify src/*.js -t babelify --plugins transform-es2015-classes -o public/bundle.js --debug --verbose"
-  },
-  "ava": {
-	  "files": [
-		"test/*.js"
-	  ],
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/leonormes/seaviewtimetable.git"
-  },
-  "author": "Leon Ormes",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/leonormes/seaviewtimetable#readme"
+	"name": "seaviewtimetable",
+	"version": "0.0.1",
+	"description": "Seaview timetable",
+	"main": "index.js",
+	"dependencies": {
+		"chai": "^3.5.0",
+		"moment": "^2.17.1"
+	},
+	"devDependencies": {
+		"ava": "^0.18.1",
+		"babel-cli": "^6.18.0",
+		"babel-plugin-transform-custom-element-classes": "^0.1.0",
+		"babel-plugin-transform-es2015-classes": "^6.18.0",
+		"babel-polyfill": "^6.20.0",
+		"babel-preset-latest": "^6.16.0",
+		"babel-register": "^6.22.0",
+		"babelify": "^7.3.0",
+		"browserify": "^13.1.1",
+		"chai": "^3.5.0",
+		"eslint": "^3.15.0",
+		"eslint-config-google": "^0.7.1",
+		"eslint-plugin-ava": "^4.1.0",
+		"mocha": "^3.2.0",
+		"nyc": "^10.1.2",
+		"watchify": "^3.8.0"
+	},
+	"scripts": {
+		"report": "nyc report --reporter=html",
+		"test": "nyc ava",
+		"watch": "watchify src/*.js -t babelify --plugins transform-es2015-classes -o public/bundle.js --debug --verbose"
+	},
+	"ava": {
+		"files": [
+			"test/*.js"
+		],
+		"require": [
+			"babel-core/register"
+		]
+	},
+	"babel": {
+		"presets": ["latest"],
+		"plugins": ["transform-es2015-classes"],
+		"env": {
+			"development": {
+				"sourceMaps": "inline"
+			}
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@bitbucket.org/leonormes/seaviewtimetable.git"
+	},
+	"author": "Leon Ormes",
+	"license": "ISC",
+	"homepage": "https://bitbucket.org/leonormes/seaviewtimetable#readme"
 }
